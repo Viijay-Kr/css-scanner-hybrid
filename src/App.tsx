@@ -1,24 +1,24 @@
-import { invoke } from '@tauri-apps/api';
-import { open } from '@tauri-apps/api/dialog';
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { invoke } from "@tauri-apps/api";
+import { open } from "@tauri-apps/api/dialog";
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
 
 function App() {
-  const [greeting,setGreeting] = useState("")
+  const [greeting, setGreeting] = useState("");
   useEffect(() => {
-    invoke<string>('greet', { name: "From Tauri" }).then((res) => {
-      setGreeting(res)
-    })
-  }, [])
+    invoke<string>("greet", { name: "From Tauri" }).then((res) => {
+      setGreeting(res);
+    });
+  }, []);
 
   const onFolderSelect = async () => {
     const selected = await open({
-      directory: true
-    })
+      directory: true,
+    });
     console.log(selected);
-  }
-  
+  };
+
   return (
     <div className="App">
       <div>
@@ -35,7 +35,7 @@ function App() {
       </div>
       <button onClick={onFolderSelect}>Choose Path</button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
